@@ -1,4 +1,4 @@
-import Breadcrumb from '../components/Breadcrumb.jsx';
+// import Breadcrumb from '../components/Breadcrumb.jsx';
 import ChartFour from '../components/ChartFour';
 import ChartOne from '../components/ChartOne.jsx';
 import ChartThree from '../components/ChartThree.jsx';
@@ -7,7 +7,7 @@ import ChartTwo from '../components/ChartTwo.jsx';
 const Chart = () => {
   return (
     <>
-      <Breadcrumb pageName="Chart"  breadcrumbs={[{ name: 'Charts /', link: '#' }]} />
+      {/* <Breadcrumb pageName="Chart"  breadcrumbs={[{ name: 'Charts /', link: '#' }]} /> */}
 
       <div className="grid grid-cols-12 gap-4 md:gap-6 2xl:gap-7.5">
         <div className="col-span-12">
