@@ -1,5 +1,5 @@
 // import Breadcrumb from '../components/Breadcrumb.jsx';
-import ChartFour from '../components/ChartFour';
+import ChartFour from '../components/ChartFour.jsx';
 import ChartOne from '../components/ChartOne.jsx';
 import ChartThree from '../components/ChartThree.jsx';
 import ChartTwo from '../components/ChartTwo.jsx';
