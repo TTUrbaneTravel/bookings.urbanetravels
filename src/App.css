@@ -1,0 +1,263 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.svgbg-services {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' width='1600' height='800' preserveAspectRatio='none' viewBox='0 0 1600 800'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1949%26quot%3b)' fill='none'%3e%3crect width='1600' height='800' x='0' y='0' fill='url(%26quot%3b%23SvgjsLinearGradient1950%26quot%3b)'%3e%3c/rect%3e%3cpath d='M859.9392441090117 466.6589407316746L981.3578731985227 368.33607356256186 761.616376939899 345.24031164216365z' fill='rgba(28%2c 42%2c 142%2c 0.4)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M1021.367%2c261.296C1076.82%2c262.639%2c1135.933%2c252.204%2c1166.386%2c205.842C1199.488%2c155.446%2c1200.607%2c88.211%2c1168.636%2c37.09C1138.283%2c-11.444%2c1078.559%2c-28.484%2c1021.367%2c-26.038C968.76%2c-23.788%2c921.242%2c3.511%2c894.409%2c48.816C867.023%2c95.055%2c860.46%2c152.969%2c888.024%2c199.101C914.986%2c244.226%2c968.816%2c260.023%2c1021.367%2c261.296' fill='rgba(28%2c 42%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M1065.82%2c294.151C1122.907%2c292.254%2c1183.21%2c276.502%2c1210.628%2c226.395C1237.266%2c177.713%2c1215.905%2c120.193%2c1186.892%2c72.888C1159.516%2c28.252%2c1118.182%2c-9.871%2c1065.82%2c-9.711C1013.684%2c-9.551%2c974.735%2c30.107%2c946.026%2c73.626C912.881%2c123.869%2c874.596%2c183.713%2c903.328%2c236.604C932.726%2c290.721%2c1004.268%2c296.196%2c1065.82%2c294.151' fill='rgba(28%2c 42%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M593.4340005788722 365.65610598188863L651.2655419367738 516.3124219677452 744.0903165647287 307.82456462398704z' fill='rgba(28%2c 42%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M666.1890975344129 565.9913736904822L636.1611087749747 707.261953735216 807.4596775791467 596.0193624499204z' fill='rgba(28%2c 42%2c 142%2c 0.4)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M1702.0382869881864 701.6907234714602L1558.0925741309761 628.3467194250942 1484.74857008461 772.2924322823044 1628.6942829418203 845.6364363286705z' fill='rgba(28%2c 42%2c 142%2c 0.4)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M1614.7419020733994 301.81811379141163L1742.373456723557 105.28275450844762 1418.2065427904354 174.18655914125395z' fill='rgba(28%2c 42%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M294.687%2c236.197C346.86%2c235.43%2c391.737%2c203.651%2c418.631%2c158.937C446.493%2c112.614%2c459.112%2c54.866%2c431.817%2c8.206C404.732%2c-38.095%2c348.251%2c-55.809%2c294.687%2c-52.937C246.136%2c-50.334%2c206.026%2c-19.941%2c180.862%2c21.661C154.608%2c65.065%2c140.493%2c117.865%2c164.268%2c162.676C189.337%2c209.926%2c241.205%2c236.983%2c294.687%2c236.197' fill='rgba(28%2c 42%2c 142%2c 0.4)' class='triangle-float3'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1949'%3e%3crect width='1600' height='800' fill='white'%3e%3c/rect%3e%3c/mask%3e%3clinearGradient x1='87.5%25' y1='125%25' x2='12.5%25' y2='-25%25' gradientUnits='userSpaceOnUse' id='SvgjsLinearGradient1950'%3e%3cstop stop-color='rgba(234%2c 239%2c 243%2c 1)' offset='0.43'%3e%3c/stop%3e%3cstop stop-color='rgba(79%2c 172%2c 254%2c 1)' offset='1'%3e%3c/stop%3e%3c/linearGradient%3e%3cstyle%3e %40keyframes float1 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-10px%2c 0)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float1 %7b animation: float1 5s infinite%3b %7d %40keyframes float2 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-5px%2c -5px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float2 %7b animation: float2 4s infinite%3b %7d %40keyframes float3 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(0%2c -10px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float3 %7b animation: float3 6s infinite%3b %7d %3c/style%3e%3c/defs%3e%3c/svg%3e");
+}
+
+.svgbg {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' width='1440' height='560' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg clip-path='url(%26quot%3b%23SvgjsClipPath10521%26quot%3b)' fill='none'%3e%3ccircle r='14.825' cx='1019.47' cy='93.53' fill='url(%26quot%3b%23SvgjsLinearGradient10522%26quot%3b)'%3e%3c/circle%3e%3ccircle r='33.2' cx='1324.98' cy='359.9' fill='url(%26quot%3b%23SvgjsLinearGradient10523%26quot%3b)'%3e%3c/circle%3e%3ccircle r='37.635' cx='367.72' cy='198.39' fill='url(%26quot%3b%23SvgjsLinearGradient10524%26quot%3b)'%3e%3c/circle%3e%3ccircle r='18.38' cx='481.23' cy='555.41' fill='url(%26quot%3b%23SvgjsLinearGradient10525%26quot%3b)'%3e%3c/circle%3e%3ccircle r='19.72' cx='997.12' cy='247.85' fill='url(%26quot%3b%23SvgjsRadialGradient10526%26quot%3b)'%3e%3c/circle%3e%3ccircle r='24.44' cx='450.57' cy='206.57' fill='url(%26quot%3b%23SvgjsLinearGradient10527%26quot%3b)'%3e%3c/circle%3e%3ccircle r='41.34' cx='730.21' cy='200.23' fill='url(%26quot%3b%23SvgjsRadialGradient10528%26quot%3b)'%3e%3c/circle%3e%3ccircle r='54.26' cx='795.54' cy='399.23' fill='url(%26quot%3b%23SvgjsRadialGradient10529%26quot%3b)'%3e%3c/circle%3e%3c/g%3e%3cdefs%3e%3cclipPath id='SvgjsClipPath10521'%3e%3crect width='1440' height='560' x='0' y='0'%3e%3c/rect%3e%3c/clipPath%3e%3clinearGradient x1='1019.47' y1='123.18' x2='1019.47' y2='63.88' gradientUnits='userSpaceOnUse' id='SvgjsLinearGradient10522'%3e%3cstop stop-color='rgba(226%2c 152%2c 222%2c 1)' offset='0'%3e%3c/stop%3e%3cstop stop-color='rgba(18%2c 110%2c 164%2c 1)' offset='0'%3e%3c/stop%3e%3c/linearGradient%3e%3clinearGradient x1='1324.98' y1='426.3' x2='1324.98' y2='293.5' gradientUnits='userSpaceOnUse' id='SvgjsLinearGradient10523'%3e%3cstop stop-color='rgba(226%2c 152%2c 222%2c 1)' offset='0'%3e%3c/stop%3e%3cstop stop-color='rgba(18%2c 110%2c 164%2c 1)' offset='0'%3e%3c/stop%3e%3c/linearGradient%3e%3clinearGradient x1='292.45000000000005' y1='198.39' x2='442.99' y2='198.39' gradientUnits='userSpaceOnUse' id='SvgjsLinearGradient10524'%3e%3cstop stop-color='rgba(79%2c 172%2c 254%2c 1)' offset='1'%3e%3c/stop%3e%3cstop stop-color='%237e6286' offset='1'%3e%3c/stop%3e%3c/linearGradient%3e%3clinearGradient x1='481.23' y1='592.17' x2='481.23' y2='518.65' gradientUnits='userSpaceOnUse' id='SvgjsLinearGradient10525'%3e%3cstop stop-color='rgba(226%2c 152%2c 222%2c 1)' offset='0'%3e%3c/stop%3e%3cstop stop-color='rgba(18%2c 110%2c 164%2c 1)' offset='0'%3e%3c/stop%3e%3c/linearGradient%3e%3cradialGradient cx='997.1200000000001' cy='247.85' r='55.78' gradientUnits='userSpaceOnUse' id='SvgjsRadialGradient10526'%3e%3cstop stop-color='%23ab3c51' offset='0'%3e%3c/stop%3e%3cstop stop-color='rgba(88%2c 172%2c 245%2c 1)' offset='0'%3e%3c/stop%3e%3c/radialGradient%3e%3clinearGradient x1='450.57' y1='255.45' x2='450.57' y2='157.69' gradientUnits='userSpaceOnUse' id='SvgjsLinearGradient10527'%3e%3cstop stop-color='rgba(226%2c 152%2c 222%2c 1)' offset='0'%3e%3c/stop%3e%3cstop stop-color='rgba(18%2c 110%2c 164%2c 1)' offset='0'%3e%3c/stop%3e%3c/linearGradient%3e%3cradialGradient cx='730.21' cy='200.23' r='116.93' gradientUnits='userSpaceOnUse' id='SvgjsRadialGradient10528'%3e%3cstop stop-color='%23ab3c51' offset='0'%3e%3c/stop%3e%3cstop stop-color='rgba(88%2c 172%2c 245%2c 1)' offset='0'%3e%3c/stop%3e%3c/radialGradient%3e%3cradialGradient cx='795.54' cy='399.23' r='153.47' gradientUnits='userSpaceOnUse' id='SvgjsRadialGradient10529'%3e%3cstop stop-color='%23ab3c51' offset='0'%3e%3c/stop%3e%3cstop stop-color='rgba(88%2c 172%2c 245%2c 1)' offset='0'%3e%3c/stop%3e%3c/radialGradient%3e%3c/defs%3e%3c/svg%3e");
+}
+
+.svgbg-collaboration {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' width='1600' height='560' preserveAspectRatio='none' viewBox='0 0 1600 560'%3e%3cg clip-path='url(%26quot%3b%23SvgjsClipPath2065%26quot%3b)' fill='none'%3e%3ccircle r='15.875' cx='1251.39' cy='345.21' fill='url(%26quot%3b%23SvgjsLinearGradient2066%26quot%3b)'%3e%3c/circle%3e%3ccircle r='27.69' cx='467.5' cy='517.37' fill='url(%26quot%3b%23SvgjsRadialGradient2067%26quot%3b)'%3e%3c/circle%3e%3ccircle r='54.6' cx='1128.05' cy='445.7' fill='url(%26quot%3b%23SvgjsLinearGradient2068%26quot%3b)'%3e%3c/circle%3e%3ccircle r='44.87' cx='878.79' cy='4.05' fill='url(%26quot%3b%23SvgjsRadialGradient2069%26quot%3b)'%3e%3c/circle%3e%3ccircle r='35.565' cx='1578.84' cy='456.17' fill='url(%26quot%3b%23SvgjsLinearGradient2070%26quot%3b)'%3e%3c/circle%3e%3ccircle r='22.975' cx='876.11' cy='536' fill='url(%26quot%3b%23SvgjsLinearGradient2071%26quot%3b)'%3e%3c/circle%3e%3ccircle r='47.305' cx='1504.66' cy='461.17' fill='url(%26quot%3b%23SvgjsLinearGradient2072%26quot%3b)'%3e%3c/circle%3e%3ccircle r='28.105' cx='1103.88' cy='198.99' fill='url(%26quot%3b%23SvgjsLinearGradient2073%26quot%3b)'%3e%3c/circle%3e%3ccircle r='26.48' cx='215.51' cy='189.28' fill='url(%26quot%3b%23SvgjsLinearGradient2074%26quot%3b)'%3e%3c/circle%3e%3c/g%3e%3cdefs%3e%3cclipPath id='SvgjsClipPath2065'%3e%3crect width='1600' height='560' x='0' y='0'%3e%3c/rect%3e%3c/clipPath%3e%3clinearGradient x1='1251.39' y1='376.96' x2='1251.39' y2='313.46' gradientUnits='userSpaceOnUse' id='SvgjsLinearGradient2066'%3e%3cstop stop-color='rgba(226%2c 152%2c 222%2c 1)' offset='0'%3e%3c/stop%3e%3cstop stop-color='rgba(18%2c 110%2c 164%2c 1)' offset='0'%3e%3c/stop%3e%3c/linearGradient%3e%3cradialGradient cx='412.12' cy='517.37' r='123.83' gradientUnits='userSpaceOnUse' id='SvgjsRadialGradient2067'%3e%3cstop stop-color='%23ab3c51' offset='0'%3e%3c/stop%3e%3cstop stop-color='rgba(88%2c 172%2c 245%2c 1)' offset='0'%3e%3c/stop%3e%3c/radialGradient%3e%3clinearGradient x1='1018.8499999999999' y1='554.9' x2='1237.25' y2='336.5' gradientUnits='userSpaceOnUse' id='SvgjsLinearGradient2068'%3e%3cstop stop-color='%23f29b7c' offset='0.1'%3e%3c/stop%3e%3cstop stop-color='rgba(238%2c 111%2c 12%2c 1)' offset='0.9'%3e%3c/stop%3e%3c/linearGradient%3e%3cradialGradient cx='789.05' cy='4.049999999999997' r='200.66' gradientUnits='userSpaceOnUse' id='SvgjsRadialGradient2069'%3e%3cstop stop-color='%23ab3c51' offset='0'%3e%3c/stop%3e%3cstop stop-color='rgba(88%2c 172%2c 245%2c 1)' offset='0'%3e%3c/stop%3e%3c/radialGradient%3e%3clinearGradient x1='1578.8400000000001' y1='527.3' x2='1578.8400000000001' y2='385.04' gradientUnits='userSpaceOnUse' id='SvgjsLinearGradient2070'%3e%3cstop stop-color='rgba(226%2c 152%2c 222%2c 1)' offset='0'%3e%3c/stop%3e%3cstop stop-color='rgba(18%2c 110%2c 164%2c 1)' offset='0'%3e%3c/stop%3e%3c/linearGradient%3e%3clinearGradient x1='876.11' y1='581.95' x2='876.11' y2='490.05' gradientUnits='userSpaceOnUse' id='SvgjsLinearGradient2071'%3e%3cstop stop-color='rgba(226%2c 152%2c 222%2c 1)' offset='0'%3e%3c/stop%3e%3cstop stop-color='rgba(18%2c 110%2c 164%2c 1)' offset='0'%3e%3c/stop%3e%3c/linearGradient%3e%3clinearGradient x1='1410.0500000000002' y1='555.78' x2='1599.2700000000002' y2='366.56' gradientUnits='userSpaceOnUse' id='SvgjsLinearGradient2072'%3e%3cstop stop-color='%23f29b7c' offset='0.1'%3e%3c/stop%3e%3cstop stop-color='rgba(238%2c 111%2c 12%2c 1)' offset='0.9'%3e%3c/stop%3e%3c/linearGradient%3e%3clinearGradient x1='1103.88' y1='255.2' x2='1103.88' y2='142.78' gradientUnits='userSpaceOnUse' id='SvgjsLinearGradient2073'%3e%3cstop stop-color='rgba(226%2c 152%2c 222%2c 1)' offset='0'%3e%3c/stop%3e%3cstop stop-color='rgba(18%2c 110%2c 164%2c 1)' offset='0'%3e%3c/stop%3e%3c/linearGradient%3e%3clinearGradient x1='162.54999999999998' y1='242.24' x2='268.46999999999997' y2='136.32' gradientUnits='userSpaceOnUse' id='SvgjsLinearGradient2074'%3e%3cstop stop-color='%23f29b7c' offset='0.1'%3e%3c/stop%3e%3cstop stop-color='rgba(238%2c 111%2c 12%2c 1)' offset='0.9'%3e%3c/stop%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e");
+}
+/* Navbar styling */
+.navbar-custom {
+  background-color: rgba(255, 255, 255, 0.2);
+  /* background-color: rgba(0, 0, 255, 0); Fully transparent */
+  /* Semi-transparent white */
+  backdrop-filter: blur(10px);
+  /* Apply blur to the background */
+  padding: 20px 0;
+  z-index: 1050;
+  /* Ensure navbar is above video */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  /* Optional: Add a subtle shadow for better visibility */
+  box-shadow: 0 4px 10px rgba(0,  0,  0,  0.1);
+}
+
+/* Solid white navbar with shadow */
+.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px 0;
+  z-index: 1050;
+}
+
+/* Container styling */
+.project-container {
+  text-align: left;
+  padding: 20px;
+  background: linear-gradient(to right, #4facfe, #00f2fe);
+}
+
+.project-container h2 {
+  font-size: 24px;
+  color: white;
+  margin-bottom: 20px;
+}
+
+/* Card styling */
+.card {
+  position: relative;
+  width: 300px;
+  height: 200px;
+  margin: 10px;
+  display: inline-block;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* Overlay styling */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.overlay button {
+  display: none;
+  background-color: white;
+  color: #4facfe;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.card:hover .overlay button {
+  display: block;
+  transform: scale(1.1);
+}
+
+/* Define the sliding animation */
+@keyframes slideTiled {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Apply the animation to the layers */
+.animate-slide-tiled {
+  animation: slideTiled 0.6s ease-out forwards;
+}
+
+/* Delay the middle and bottom layers */
+.animate-slide-tiled-delay-200 {
+  animation: slideTiled 0.6s ease-out 0.2s forwards;
+}
+
+.animate-slide-tiled-delay-400 {
+  animation: slideTiled 0.6s ease-out 0.4s forwards;
+}
+
+/* Right Diagonal Slash Effect with Rounded Bottom-Right Corner */
+.clip-diagonal-right-rounded {
+  clip-path: polygon(0% 0%, 100% 0%, 85% 100%, 0% 100%);
+}
+
+/* navbar and hero css */
+
+@keyframes move-left {
+  0% {
+    transform: translateX(100%); /* Start from right */
+  }
+  100% {
+    transform: translateX(-50%); /* Move to front of hotel */
+  }
+}
+
+.animate-move-left {
+  animation: move-left 1s ease-out forwards;
+}
+
+/* Optional Custom CSS */
+.form-check-input {
+  /* Optional: add some custom border radius or color */
+  border-radius: 0.25rem;
+  border-color: #6c757d; /* Bootstrap default border color */
+}
+
+.form-check-input:checked {
+  /* Custom color for checked boxes */
+  background-color: #007bff; /* Bootstrap primary color */
+  border-color: #007bff;
+}
+
+.form-check-label {
+  font-size: 1rem; /* Adjust font size */
+  color: #495057; /* Bootstrap secondary text color */
+}
+
+.form-check-label:hover {
+  color: #007bff; /* Hover effect on label */
+}
+
+.flight-search-background {
+  background-image: url("/src/assets/flight.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Hide scrollbar in webkit browsers (Chrome, Safari) */
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none; /* Hide scrollbar in Internet Explorer and Edge */
+  scrollbar-width: none; /* Hide scrollbar in Firefox */
+}
+
+/* font */
+
+/* @font-face {
+  font-family: "taglineFont";
+  src: url("../../assets/fonts/gendy.otf") format("opentype");
+} */
+
+@font-face {
+  font-family: "taglineFont";
+  src: url("/src/assets/fonts/Poppins-SemiBold.ttf") format("truetype");
+}
+
+.taglineFonts{
+  font-family: 'taglineFont';
+}
+
