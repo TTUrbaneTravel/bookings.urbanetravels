@@ -1,52 +1,243 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faX, faBars } from '@fortawesome/free-solid-svg-icons';
-import {
-  faFacebook,
-  faTwitter,
-  faInstagram,
-} from '@fortawesome/free-brands-svg-icons';
-import flightImg from '../assets/flighticon.png';
-import hotelImg from '../assets/hotelicon.png';
-import trainImg from '../assets/trainicon.png';
-import busImg from '../assets/busicon.png';
-import cabImg from '../assets/cabicon.png';
-import visaImg from '../assets/visaicon.png';
-import logo from '../assets/logo.png';
+// Navbar.jsx
+'use client';
 
-const Navbar = () => {
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import {
+  Facebook,
+  Twitter,
+  Instagram,
+  X,
+  Menu,
+  ChevronDown,
+} from 'lucide-react';
+
+// Icon Component to render different icons
+function IconComponent({ name, className }) {
+  switch (name) {
+    case 'plane':
+      return (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className={className}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z" />
+        </svg>
+      );
+    case 'hotel':
+      return (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className={className}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M19 21V5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v16" />
+          <path d="M2 21h20" />
+          <path d="M12 7v.01" />
+          <path d="M12 11v.01" />
+          <path d="M12 15v.01" />
+          <path d="M12 19v.01" />
+          <path d="M16 7v.01" />
+          <path d="M16 11v.01" />
+          <path d="M16 15v.01" />
+          <path d="M16 19v.01" />
+          <path d="M8 7v.01" />
+          <path d="M8 11v.01" />
+          <path d="M8 15v.01" />
+          <path d="M8 19v.01" />
+        </svg>
+      );
+    case 'train':
+      return (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className={className}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <rect x="4" y="3" width="16" height="16" rx="2" />
+          <path d="M4 11h16" />
+          <path d="M12 3v8" />
+          <path d="m8 19-2 3" />
+          <path d="m18 22-2-3" />
+          <path d="M8 15h0" />
+          <path d="M16 15h0" />
+        </svg>
+      );
+    case 'bus':
+      return (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className={className}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M8 6v6" />
+          <path d="M16 6v6" />
+          <path d="M2 12h20" />
+          <path d="M7 18h10" />
+          <path d="M18 18h1a2 2 0 0 0 2-2v-7a5 5 0 0 0-5-5H8a5 5 0 0 0-5 5v7a2 2 0 0 0 2 2h1" />
+          <circle cx="7" cy="18" r="2" />
+          <circle cx="17" cy="18" r="2" />
+        </svg>
+      );
+    case 'car':
+      return (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className={className}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M14 16H9m10 0h3v-3.15a1 1 0 0 0-.84-.99L16 11l-2.7-3.6a1 1 0 0 0-.8-.4H5.24a2 2 0 0 0-1.8 1.1l-.8 1.63A6 6 0 0 0 2 12.42V16h2" />
+          <circle cx="6.5" cy="16.5" r="2.5" />
+          <circle cx="16.5" cy="16.5" r="2.5" />
+        </svg>
+      );
+    case 'passport':
+      return (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className={className}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <rect x="4" y="2" width="16" height="20" rx="2" />
+          <circle cx="12" cy="10" r="3" />
+          <path d="M8 18h8" />
+        </svg>
+      );
+    default:
+      return null;
+  }
+}
+
+// Social Media Button Component
+function SocialButton({ icon }) {
+  return (
+    <a
+      href="#"
+      className="w-9 h-9 flex items-center justify-center rounded-full border border-gray-200 text-gray-600 hover:bg-blue-500 hover:text-white hover:border-blue-500 transition-colors"
+    >
+      {icon}
+    </a>
+  );
+}
+
+export default function Navbar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  // Handle scroll effect for navbar
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 10) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const menuItems = [
-    { name: 'Flights', img: flightImg, path: '/flights' },
-    { name: 'Hotels', img: hotelImg, path: '/hotels' },
-    { name: 'Trains', img: trainImg, path: '/trains' },
-    { name: 'Bus', img: busImg, path: '/bus' },
-    { name: 'Cabs', img: cabImg, path: '/cabs' },
-    { name: 'Visa', img: visaImg, path: '/visa' },
+    { name: 'Flights', icon: 'plane', path: '/flights' },
+    { name: 'Hotels', icon: 'hotel', path: '/hotels' },
+    { name: 'Trains', icon: 'train', path: '/trains' },
+    { name: 'Bus', icon: 'bus', path: '/bus' },
+    { name: 'Cabs', icon: 'car', path: '/cabs' },
+    { name: 'Visa', icon: 'passport', path: '/visa' },
   ];
+
+  // Close sidebar when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      const sidebar = document.getElementById('mobile-sidebar');
+      if (sidebar && !sidebar.contains(event.target) && isSidebarOpen) {
+        setIsSidebarOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [isSidebarOpen]);
+
+  // Prevent body scroll when sidebar is open
+  useEffect(() => {
+    if (isSidebarOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [isSidebarOpen]);
 
   return (
     <>
       {/* Navbar */}
-      <nav className="bg-white shadow-md fixed w-full top-0 z-50">
-        <div className="container mx-auto p-3 flex justify-between items-center">
+      <nav
+        className={`fixed w-full top-0 z-50 bg-white transition-all duration-300 ${scrolled ? 'shadow-md py-2' : 'py-3'}`}
+      >
+        <div className="container mx-auto px-4 flex justify-between items-center">
           {/* Company Logo */}
           <div className="flex items-center">
-            <img src={logo} alt="Urbane Travels" className="h-14 w-auto" />
+            <Link to="/" className="flex items-center">
+              {/* Replace with your actual logo */}
+              <img
+                src="/src/assets/logo.png"
+                alt="Urbane Travels Logo"
+                className="h-20 w-auto"
+              />
+            </Link>
           </div>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-3 gap-4">
+          {/* Menu Items */}
+          <div className="hidden lg:flex items-center space-x-4">
             {menuItems.map((item, index) => (
               <Link
                 key={index}
                 to={item.path}
-                className="w-20 h-20 flex gap-2 flex-col items-center justify-center rounded-lg p-2 transition bg-transparent hover:bg-[#0e92e8] group"
+                className="group flex flex-col items-center justify-center w-20 h-20 rounded-md p-2 transition-all hover:bg-blue-500"
               >
-                <img src={item.img} alt={item.name} className="w-8 h-8" />
-                <span className="text-xs text-gray-700 group-hover:text-white transition">
+                <div className="w-10 h-10 p-0 border border-gray-300 flex items-center justify-center rounded-full bg-blue-50 group-hover:bg-white/90 transition-all">
+                  <IconComponent
+                    name={item.icon}
+                    className="w-5 h-5 text-blue-500 group-hover:text-blue-600"
+                  />
+                </div>
+                <span className="mt-1 text-sm font-bold text-gray-700 group-hover:text-white transition-colors">
                   {item.name}
                 </span>
               </Link>
@@ -54,116 +245,158 @@ const Navbar = () => {
           </div>
 
           {/* Login, Customer Care & Social Icons */}
-          <div className="hidden md:flex space-x-4 items-center">
-            <button
-              onClick={() => window.open('/auth/signin', '_blank')}
-              className="px-3 py-1 border border-blue-500 text-blue-500 rounded-lg transition hover:bg-[#0e92e8] hover:text-white"
-            >
-              Login
-            </button>
+          <div className="hidden lg:flex items-center space-x-4">
+            <div className="relative">
+              <button
+                onClick={() => setIsLoginOpen(!isLoginOpen)}
+                className="flex items-center gap-1 rounded-md border border-blue-500 py-2 px-4 text-sm font-medium text-blue-600 transition-all hover:bg-blue-500 hover:text-white focus:ring-2 focus:ring-blue-300"
+              >
+                Login
+                <ChevronDown
+                  className={`w-4 h-4 transition-transform ${isLoginOpen ? 'rotate-180' : ''}`}
+                />
+              </button>
 
-            <button className="px-3 py-1 border border-blue-500 text-blue-500 rounded-lg transition hover:bg-[#0e92e8] hover:text-white">
-              Customer Care
-            </button>
+              {isLoginOpen && (
+                <div className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                  <Link
+                    to="/login"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50"
+                    onClick={() => setIsLoginOpen(false)}
+                  >
+                    Customer Login
+                  </Link>
+                  <Link
+                    to="/agent-login"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50"
+                    onClick={() => setIsLoginOpen(false)}
+                  >
+                    Agent Login
+                  </Link>
+                </div>
+              )}
+            </div>
+
             <div className="flex space-x-2">
-              <a
-                href="#"
-                className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 hover:bg-[#0e92e8] hover:text-white transition"
-              >
-                <FontAwesomeIcon icon={faFacebook} size="lg" />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 hover:bg-[#0e92e8] hover:text-white transition"
-              >
-                <FontAwesomeIcon icon={faTwitter} size="lg" />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 hover:bg-[#0e92e8] hover:text-white transition"
-              >
-                <FontAwesomeIcon icon={faInstagram} size="lg" />
-              </a>
+              <SocialButton icon={<Facebook className="w-4 h-4" />} />
+              <SocialButton icon={<Twitter className="w-4 h-4" />} />
+              <SocialButton icon={<Instagram className="w-4 h-4" />} />
             </div>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsSidebarOpen(true)}
-              className="text-gray-700 focus:outline-none"
-            >
-              <FontAwesomeIcon icon={faBars} size="lg" />
-            </button>
-          </div>
+          <button
+            onClick={() => setIsSidebarOpen(true)}
+            className="lg:hidden flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 text-gray-700 focus:outline-none hover:bg-gray-200 transition-colors"
+            aria-label="Open menu"
+          >
+            <Menu className="w-5 h-5" />
+          </button>
         </div>
       </nav>
 
-      {/* Sidebar for Mobile */}
+      {/* Mobile Sidebar Overlay */}
       {isSidebarOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-50">
-          <div className="fixed left-0 top-0 h-full w-64 bg-white shadow-lg p-5">
+        <div
+          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 lg:hidden transition-all"
+          onClick={() => setIsSidebarOpen(false)}
+        >
+          {/* Sidebar Content - Prevent click propagation */}
+          <div
+            id="mobile-sidebar"
+            className="fixed right-0 top-0 h-full w-72 bg-white shadow-xl p-5 transform transition-transform duration-300 ease-in-out"
+            onClick={(e) => e.stopPropagation()}
+          >
             {/* Close Button */}
             <button
               onClick={() => setIsSidebarOpen(false)}
-              className="absolute top-4 right-4 text-gray-600"
+              className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-gray-200 transition-colors"
+              aria-label="Close menu"
             >
-              <FontAwesomeIcon icon={faX} size="lg" />
+              <X className="w-4 h-4" />
             </button>
 
+            <div className="mt-2 mb-8">
+              <div className="flex items-center ">
+                <img
+                  src="/src/assets/logo.png"
+                  alt="Urbane Travels Logo"
+                  className="h-20 w-auto mr-2"
+                />
+              </div>
+            </div>
+
             {/* Sidebar Menu */}
-            <div className="mt-8 space-y-4">
+            <div className="space-y-1">
               {menuItems.map((item, index) => (
                 <Link
                   key={index}
                   to={item.path}
-                  className="w-full flex gap-3 items-center p-2 rounded-lg transition hover:bg-[#0e92e8] group"
+                  className="flex items-center gap-3 p-3 rounded-lg transition-colors hover:bg-blue-50 group"
                   onClick={() => setIsSidebarOpen(false)}
                 >
-                  <img src={item.img} alt={item.name} className="w-6 h-6" />
-                  <span className="text-sm text-gray-700 group-hover:text-white transition">
+                  <div className="w-9 h-9 flex items-center justify-center rounded-full bg-blue-100 group-hover:bg-blue-200 transition-colors">
+                    <IconComponent
+                      name={item.icon}
+                      className="w-4 h-4 text-blue-600"
+                    />
+                  </div>
+                  <span className="text-sm font-medium text-gray-700">
                     {item.name}
                   </span>
                 </Link>
               ))}
             </div>
 
-            {/* Sidebar Buttons */}
-            <div className="mt-6 space-y-3">
-              <button className="w-full px-4 py-2 border border-blue-500 text-blue-500 rounded-lg transition hover:bg-[#0e92e8] hover:text-white">
-                Login
-              </button>
-              <button className="w-full px-4 py-2 border border-blue-500 text-blue-500 rounded-lg transition hover:bg-[#0e92e8] hover:text-white">
-                Customer Care
-              </button>
+            {/* Sidebar Login Button */}
+            <div className="mt-8">
+              <div className="relative">
+                <button
+                  onClick={() => setIsLoginOpen(!isLoginOpen)}
+                  className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg bg-blue-500 text-white font-medium hover:bg-blue-600 transition-colors"
+                >
+                  Login
+                  <ChevronDown
+                    className={`w-4 h-4 transition-transform ${isLoginOpen ? 'rotate-180' : ''}`}
+                  />
+                </button>
+
+                {isLoginOpen && (
+                  <div className="absolute left-0 right-0 z-10 mt-2 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                    <Link
+                      to="/login"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50"
+                      onClick={() => {
+                        setIsLoginOpen(false);
+                        setIsSidebarOpen(false);
+                      }}
+                    >
+                      Customer Login
+                    </Link>
+                    <Link
+                      to="/agent-login"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50"
+                      onClick={() => {
+                        setIsLoginOpen(false);
+                        setIsSidebarOpen(false);
+                      }}
+                    >
+                      Agent Login
+                    </Link>
+                  </div>
+                )}
+              </div>
             </div>
 
             {/* Sidebar Social Icons */}
-            <div className="mt-6 flex justify-center space-x-3">
-              <a
-                href="#"
-                className="p-3 rounded-full border border-gray-300 hover:bg-[#0e92e8] hover:text-white transition"
-              >
-                <FontAwesomeIcon icon={faFacebook} size="lg" />
-              </a>
-              <a
-                href="#"
-                className="p-3 rounded-full border border-gray-300 hover:bg-[#0e92e8] hover:text-white transition"
-              >
-                <FontAwesomeIcon icon={faTwitter} size="lg" />
-              </a>
-              <a
-                href="#"
-                className="p-3 rounded-full border border-gray-300 hover:bg-[#0e92e8] hover:text-white transition"
-              >
-                <FontAwesomeIcon icon={faInstagram} size="lg" />
-              </a>
+            <div className="mt-8 flex justify-center space-x-3">
+              <SocialButton icon={<Facebook className="w-4 h-4" />} />
+              <SocialButton icon={<Twitter className="w-4 h-4" />} />
+              <SocialButton icon={<Instagram className="w-4 h-4" />} />
             </div>
           </div>
         </div>
       )}
     </>
   );
-};
-
-export default Navbar;
+}
