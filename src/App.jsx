@@ -4,6 +4,7 @@ import { Toaster } from 'react-hot-toast';
 import Loader from './common/Loader';
 import SignIn from './pages/Authentication/SignIn';
 import SignUp from './pages/Authentication/SignUp';
+import B2CLogin from './pages/b2clogin'; // Import B2CLogin
 import routes from './routes/index';
 import routes1 from './routes/index1';
 import ECommerce from './pages/Dashboard/ECommerce';
@@ -37,6 +38,7 @@ function App() {
         {/* Authentication Routes */}
         <Route path="/auth/signin" element={<SignIn />} />
         <Route path="/auth/signup" element={<SignUp />} />
+        <Route path="/customer-login" element={<B2CLogin />} /> {/* New Route */}
 
         {/* Protected Routes (Require Authentication) */}
         <Route
@@ -62,20 +64,17 @@ function App() {
 
         <Route element={<DefaultLayout />}>
           <Route element={<ECommerce />} />
-          {routes1.map((routes, index) => {
-            const { path, component: Component } = routes;
-            return (
-              <Route
-                key={index}
-                path={path}
-                element={
-                  <Suspense fallback={<Loader />}>
-                    <Component />
-                  </Suspense>
-                }
-              />
-            );
-          })}
+          {routes1.map(({ path, component: Component }, index) => (
+            <Route
+              key={index}
+              path={path}
+              element={
+                <Suspense fallback={<Loader />}>
+                  <Component />
+                </Suspense>
+              }
+            />
+          ))}
         </Route>
       </Routes>
     </>
