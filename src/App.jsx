@@ -22,6 +22,13 @@ function App() {
     setTimeout(() => setLoading(false), 1000);
   }, []);
 
+  // Function to check if the user is authenticated
+  const isAuthenticated = () => {
+    // Implement your authentication logic here
+    // For example, check if a token exists in localStorage
+    return localStorage.getItem('token') !== null;
+  };
+
   return loading ? (
     <Loader />
   ) : (
@@ -44,7 +51,7 @@ function App() {
         <Route
           element={
             <Suspense fallback={<Loader />}>
-              <UserLayout />
+              {isAuthenticated() ? <UserLayout /> : <SignIn />}
             </Suspense>
           }
         >
@@ -62,8 +69,15 @@ function App() {
           ))}
         </Route>
 
-        <Route element={<DefaultLayout />}>
-          <Route element={<ECommerce />} />
+        {/* Default Layout Routes */}
+        <Route
+          element={
+            <Suspense fallback={<Loader />}>
+              <DefaultLayout />
+            </Suspense>
+          }
+        >
+          <Route path="/ecommerce" element={<ECommerce />} />
           {routes1.map(({ path, component: Component }, index) => (
             <Route
               key={index}

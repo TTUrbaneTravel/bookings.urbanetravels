@@ -28,11 +28,10 @@ db.connect((err) => {
   console.log("Connected to MySQL Database!");
 });
 
-// User Registration
 app.post("/register", (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, password, phone } = req.body;
 
-  if (!name || !email || !password) {
+  if (!name || !email || !password || !phone) {
     return res.status(400).json({ error: "All fields are required!" });
   }
 
@@ -53,8 +52,8 @@ app.post("/register", (req, res) => {
       }
 
       db.query(
-        "INSERT INTO users (name, email, password) VALUES (?, ?, ?)",
-        [name, email, hash],
+        "INSERT INTO users (name, email, password, phone) VALUES (?, ?, ?, ?)",
+        [name, email, hash, phone],
         (err, result) => {
           if (err) {
             console.error("Database Error (INSERT):", err);
@@ -66,7 +65,6 @@ app.post("/register", (req, res) => {
     });
   });
 });
-
 // User Login
 app.post("/login", (req, res) => {
   const { email, password } = req.body;

@@ -10,30 +10,30 @@ import companyLogo from '../assets/logo.png'; // Adjust the path as needed
 
 // Direct image URLs
 export const DEMO_IMAGES = {
-  hero: 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=2070&auto=format&fit=crop',
+  hero: 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=2070&auto=format&fit=crop  ',
   hero2:
-    'https://images.unsplash.com/photo-1502920917128-1aa500764cbd?q=80&w=2070&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1502920917128-1aa500764cbd?q=80&w=2070&auto=format&fit=crop  ',
   hero3:
-    'https://images.unsplash.com/photo-1581351721010-8cf859cb14a4?q=80&w=2070&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1581351721010-8cf859cb14a4?q=80&w=2070&auto=format&fit=crop  ',
   dest1:
-    'https://images.unsplash.com/photo-1530841377377-3ff06c0ca713?q=80&w=2070&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1530841377377-3ff06c0ca713?q=80&w=2070&auto=format&fit=crop  ',
   dest2:
-    'https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?q=80&w=2070&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?q=80&w=2070&auto=format&fit=crop  ',
   dest3:
-    'https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=2070&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=2070&auto=format&fit=crop  ',
 };
 
 // Company logos
 const COMPANY_LOGOS = {
   google:
-    'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg',
+    'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg  ',
   facebook:
-    'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/facebook/facebook-original.svg',
-  slr: 'https://img.icons8.com/color/48/000000/slr-camera.png',
-  partner1: 'https://img.icons8.com/color/48/000000/airbnb.png',
-  partner2: 'https://img.icons8.com/color/48/000000/tripadvisor.png',
-  partner3: 'https://img.icons8.com/color/48/000000/booking-com.png',
-  travelLogo: 'https://img.icons8.com/fluency/96/000000/around-the-globe.png',
+    'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/facebook/facebook-original.svg  ',
+  slr: 'https://img.icons8.com/color/48/000000/slr-camera.png  ',
+  partner1: 'https://img.icons8.com/color/48/000000/airbnb.png  ',
+  partner2: 'https://img.icons8.com/color/48/000000/tripadvisor.png  ',
+  partner3: 'https://img.icons8.com/color/48/000000/booking-com.png  ',
+  travelLogo: 'https://img.icons8.com/fluency/96/000000/around-the-globe.png  ',
 };
 
 export default function TravelLogin() {
@@ -64,7 +64,8 @@ export default function TravelLogin() {
       (!formData.name ||
         !formData.email ||
         !formData.password ||
-        !formData.confirmPassword)
+        !formData.confirmPassword ||
+        !formData.phone) // Ensure phone number is also checked
     ) {
       alert('Please fill in all fields.');
       return;
@@ -109,7 +110,19 @@ export default function TravelLogin() {
       }
     }
   };
+  const [showOtpInput, setShowOtpInput] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
+  const handleSendOTP = () => {
+    setShowOtpInput(true); // Show OTP input box when "Send OTP" is clicked
+  };
+
+  const handleVerifyOTP = () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 3000); // Simulating OTP verification delay
+  };
   return (
     <div className="flex min-h-screen bg-gradient-to-br from-sky-50 to-indigo-50 overflow-hidden">
       {/* Left Side - Animated Travel Imagery */}
@@ -185,96 +198,146 @@ export default function TravelLogin() {
           </div>
 
           <form className="space-y-5" onSubmit={handleSubmit}>
-            {isRegister && (
-              <div className="flex gap-4">
-                <div className="w-1/2">
-                  <label
-                    htmlFor="name"
-                    className="block text-sm font-medium text-gray-700 mb-1"
-                  >
-                    Full Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    placeholder="John Doe"
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
-                  />
-                </div>
-
-                <div className="w-1/2">
-                  <label
-                    htmlFor="phone"
-                    className="block text-sm font-medium text-gray-700 mb-1"
-                  >
-                    Phone Number
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    placeholder="123-456-7890"
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
-                  />
-                </div>
-                </div>
-
-             )}
-
-            <div>
+          {isRegister && (
+        <div className="flex flex-col gap-6">
+          {/* Full Name and Phone Number Fields in Two Columns */}
+          <div className="flex gap-6">
+            {/* Full Name Field */}
+            <div className="w-1/2">
               <label
-                htmlFor="email"
-                className="block text-sm font-medium text-gray-700 mb-1"
+                htmlFor="name"
+                className="block text-sm font-medium text-gray700 mb-1"
               >
-                Email Address
+                Full Name
               </label>
               <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="you@example.com"
+                type="text"
+                id="name"
+                name="name"
+                placeholder="John Doe"
                 onChange={handleChange}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                className="w-full px-4 py-3 rounded-lg border border-gray300 shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
               />
             </div>
 
-            <div className="relative">
-              <label
-                htmlFor="password"
-                className="block text-sm font-medium text-gray-700 mb-1"
+            {/* Phone Number Field with Send OTP Button */}
+            <div className="w-1/2">
+            <label
+                htmlFor="phone"
+                className="block text-sm font-medium text-gray700 mb-1"
               >
-                Password
+                Phone Number
               </label>
-              <div className="relative">
-                <input
-                  type={passwordShown ? 'text' : 'password'}
-                  id="password"
-                  name="password"
-                  placeholder="••••••••"
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
-                />
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="123-456-7890"
+                onChange={handleChange}
+                className="w-full px-4 py-3 rounded-lg border border-gray300 shadow-sm focus:ring-2 focus:ring-blue500 focus:border-blue500 transition-all"
+              />
+            
+              <button
+                type="button"
+                onClick={handleSendOTP}
+                className="w-full mt-2 bg-gray800 hover:bg-gray900 text-white text-md py-3 rounded-full transition-all flex items-center justify-center gap-2"
+              >
+                Send OTP
+              </button>
+            </div>
+          </div>
+
+          {/* OTP Input Section - Only visible after clicking "Send OTP" */}
+          {showOtpInput && (
+            <div>
+              <div className="items-center gap-4">
+                {/* OTP Input Fields */}
+                <div className="flex justify-center gap-3">
+                  {[...Array(4)].map((_, index) => (
+                    <input
+                      key={index}
+                      type="text"
+                      maxLength="1"
+                      className="w-12 h-12 text-center text-lg font-semibold border border-gray300 rounded-full focus:ring-2 focus:ring-blue500 focus:border-blue500 transition-all"
+                    />
+                  ))}
+                </div>
+
+                {/* Verify OTP Button */}
                 <button
                   type="button"
-                  onClick={() => setPasswordShown(!passwordShown)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                  onClick={handleVerifyOTP}
+                  className="w-full mt-2 bg-gray800 hover:bg-gray900 text-white text-md py-3 rounded-full transition-all flex items-center justify-center gap-2"
                 >
-                  {passwordShown ? (
-                    <EyeIcon className="h-5 w-5" />
+                  {isLoading ? (
+                    <div className="w-6 h-6 border-4 border-gray500 border-t-white rounded-full animate-spin"></div>
                   ) : (
-                    <EyeSlashIcon className="h-5 w-5" />
+                    <span>Verify OTP</span>
                   )}
                 </button>
               </div>
             </div>
-             {isRegister && (
+          )}
+        </div>
+      )}
+
+
+            <div className="flex gap-6">
+              {/* Email Address Field */}
+              <div className="w-1/2">
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium text-gray700 mb-1"
+                >
+                  Email Address
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="you@example.com"
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 rounded-lg border border-gray300 shadow-sm focus:ring-2 focus:ring-blue500 focus:border-blue500 transition-all"
+                />
+              </div>
+
+              {/* Password Field with Toggle Button */}
+              <div className="w-1/2 relative">
+                <label
+                  htmlFor="password"
+                  className="block text-sm font-medium text-gray-700 mb-1"
+                >
+                  Password
+                </label>
+                <div className="relative">
+                  <input
+                    type={passwordShown ? 'text' : 'password'}
+                    id="password"
+                    name="password"
+                    placeholder="••••••••"
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 rounded-lg border border-gray300 shadow-sm focus:ring-2 focus:ring-blue500 focus:border-blue500 transition-all pr-10"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setPasswordShown(!passwordShown)}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray500 hover:text-gray700"
+                  >
+                    {passwordShown ? (
+                      <EyeIcon className="h-5 w-5" />
+                    ) : (
+                      <EyeSlashIcon className="h-5 w-5" />
+                    )}
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {isRegister && (
               <div className="relative">
                 <label
                   htmlFor="confirmPassword"
-                  className="block text-sm font-medium text-gray-700 mb-1"
+                  className="block text-sm font-medium text-gray700 mb-1"
                 >
                   Confirm Password
                 </label>
@@ -285,13 +348,11 @@ export default function TravelLogin() {
                     name="confirmPassword"
                     placeholder="••••••••"
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                    className="w-full px-4 py-3 rounded-lg border border-gray300 focus:ring-2 focus:ring-blue500 focus:border-blue500 transition-all"
                   />
                 </div>
               </div>
-
             )}
-
             {!isRegister && (
               <div className="flex justify-end">
                 <a
@@ -302,7 +363,6 @@ export default function TravelLogin() {
                 </a>
               </div>
             )}
-
             <button
               type="submit"
               className="w-full bg-blue600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition-all flex items-center justify-center gap-2 group"
@@ -310,14 +370,12 @@ export default function TravelLogin() {
               {isRegister ? 'Create Account' : 'Sign In'}
               <ArrowRightIcon className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </button>
-
             <div className="relative flex items-center justify-center my-6">
               <div className="border-t border-gray-300 absolute w-full"></div>
               <span className="bg-white px-3 text-sm text-gray-500 relative">
                 or continue with
               </span>
             </div>
-
             <div className="grid grid-cols-1 gap-1">
               <button
                 type="button"
@@ -331,12 +389,11 @@ export default function TravelLogin() {
                 />
 
                 {/* Google Styled Text */}
-                <span className="text-lg font-bold text-gray-500 text-center">
-                  Sign in using Google
+                <span className="text-lg font-bold text-gray500 text-center">
+                  Sign in with Google
                 </span>
               </button>
             </div>
-
             <div className="text-center mt-6">
               <button
                 type="button"
