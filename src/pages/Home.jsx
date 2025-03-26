@@ -402,7 +402,7 @@ const TravelWebsite = () => {
             <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white/70">
               <Search />
             </div>
-            <Button className="absolute right-2 top-1/2 transform -translate-y-1/2 rounded-full h-10 px-6 bg-amber-500 hover:bg-amber-600 text-black font-medium">
+            <Button className="absolute right-2 top-1/2 transform -translate-y-1/2 rounded-full h-10 px-6 bg-teal700 hover:bg-teal600 text-black font-medium">
               Search
             </Button>
           </motion.div>
@@ -479,7 +479,7 @@ const TravelWebsite = () => {
                     >
                       View Details
                     </Button>
-                    <Button className="flex-1 bg-amber-500 hover:bg-amber-600 text-black">Book Now</Button>
+                    <Button className="flex-1 bg-teal700 hover:bg-teal900 text-black">Book Now</Button>
                   </div>
                 </div>
               </div>
@@ -489,14 +489,14 @@ const TravelWebsite = () => {
           <div className="flex justify-center mt-12 space-x-4">
             <Button
               variant="outline"
-              className="rounded-full h-12 w-12 border-gray-300 flex items-center justify-center"
+              className="rounded-full h-12 w-12 border-gray300 flex items-center justify-center"
               onClick={prevSlide}
             >
               <ChevronLeft />
             </Button>
             <Button
               variant="outline"
-              className="rounded-full h-12 w-12 border-gray-300 flex items-center justify-center"
+              className="rounded-full h-12 w-12 border-gray300 flex items-center justify-center"
               onClick={nextSlide}
             >
               <ChevronRight />
@@ -506,7 +506,7 @@ const TravelWebsite = () => {
       </section>
 
       {/* Special Offers */}
-      <section className="py-20 px-4 md:px-8 lg:px-16 bg-gradient-to-br from-teal-900 to-emerald-800 text-white">
+      <section className="py-20 px-4 md:px-8 lg:px-16 bg-gradient-to-br from-teal900 to-amber800 text-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">Special Offers</h2>
@@ -521,7 +521,7 @@ const TravelWebsite = () => {
                 <button
                   key={tab}
                   className={`flex-1 rounded-full py-2 text-white transition-colors ${
-                    activeTab === tab ? 'bg-white text-teal-900' : 'hover:bg-white/10'
+                    activeTab === tab ? 'bg-white text-teal800 font-bold special' : 'hover:bg-white/10'
                   }`}
                   onClick={() => setActiveTab(tab)}
                 >
@@ -535,12 +535,12 @@ const TravelWebsite = () => {
                 {offersContent[activeTab].map((offer, index) => (
                   <Card key={index} className="bg-white/10 backdrop-blur-md border-white/20 overflow-hidden">
                     <div className="p-6">
-                      <div className="absolute top-0 right-0 bg-amber-500 text-black px-4 py-1 text-sm font-medium rounded-bl-lg">
+                      <div className="absolute top-0 right-0 bg-amber500 text-white px-4 py-1 text-sm font-medium rounded-bl-lg">
                         Limited Time
                       </div>
                       <h3 className="text-2xl font-bold mb-2">{offer.title}</h3>
                       <p className="text-white/80 mb-4">{offer.description}</p>
-                      <Button className="w-full bg-white border border-white text-white hover:bg-white/90">Claim Offer</Button>
+                      <Button className="w-full bg-teal700 border border-white text-white hover:bg-white/90 hover:text-teal600">Claim Offer</Button>
                     </div>
                   </Card>
                 ))}
@@ -554,8 +554,8 @@ const TravelWebsite = () => {
       <section className="py-20 px-4 md:px-8 lg:px-16 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Our Services</h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray900 mb-4">Our Services</h2>
+            <p className="text-lg text-gray600 max-w-3xl mx-auto">
               Everything you need for a perfect travel experience
             </p>
           </div>
@@ -564,15 +564,15 @@ const TravelWebsite = () => {
             {infoBlocks.map((block, index) => (
               <div
                 key={index}
-                className="bg-white rounded-xl p-6 shadow-md border border-gray-100 transition-all duration-300 hover:shadow-xl hover:translate-y-[-5px]"
+                className="bg-white rounded-xl p-6 shadow-md border border-gray300 transition-all duration-300 hover:shadow-xl hover:translate-y-[-5px]"
               >
                 <div className="flex justify-center mb-6">
-                  <div className="w-16 h-16 flex items-center justify-center bg-amber-100 text-amber-600 rounded-full text-3xl">
+                  <div className="w-16 h-16 flex items-center justify-center bg-amber100 text-amber600 rounded-full text-3xl">
                     {block.icon}
                   </div>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 text-center mb-3">{block.title}</h3>
-                <p className="text-gray-600 text-center">{block.description}</p>
+                <h3 className="text-xl font-bold text-gray900 text-center mb-3">{block.title}</h3>
+                <p className="text-gray600 text-center">{block.description}</p>
               </div>
             ))}
           </div>
@@ -585,11 +585,11 @@ const TravelWebsite = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {/* FAQs */}
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">Frequently Asked Questions</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray900 mb-8">Frequently Asked Questions</h2>
 
               <div className="space-y-4">
                 {faqs.map((faq, index) => (
-                  <div key={index} className="border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+                  <div key={index} className="border border-gray300 rounded-full overflow-hidden shadow-sm">
                     <button
                       onClick={() => toggleFaq(index)}
                       className="w-full flex justify-between items-center px-6 py-4 text-left text-lg font-medium text-gray-900 hover:bg-gray-50"
@@ -622,14 +622,14 @@ const TravelWebsite = () => {
 
               <div className="space-y-6">
                 {reviews.map((review, index) => (
-                  <div key={index} className="bg-gray-50 rounded-xl p-6 border border-gray-100 shadow-sm">
+                  <div key={index} className="bg-gray-50 rounded-xl p-6 border border-gray300 shadow-sm">
                     <div className="flex justify-between items-start mb-4">
-                      <h3 className="text-xl font-semibold text-gray-900">{review.name}</h3>
+                      <h3 className="text-xl font-semibold text-gray900">{review.name}</h3>
                       <div className="flex">
                         {Array.from({ length: 5 }).map((_, i) => (
                           <svg
                             key={i}
-                            className={`h-5 w-5 ${i < review.rating ? 'text-amber-500' : 'text-gray-300'}`}
+                            className={`h-5 w-5 ${i < review.rating ? 'text-amber500' : 'text-gray300'}`}
                             fill="currentColor"
                             viewBox="0 0 20 20"
                           >

@@ -197,7 +197,7 @@ export default function TravelLogin() {
             </p>
           </div>
 
-          <form className="space-y-5" onSubmit={handleSubmit}>
+          <form className="space-y-5 " onSubmit={handleSubmit}>
           {isRegister && (
         <div className="flex flex-col gap-6">
           {/* Full Name and Phone Number Fields in Two Columns */}

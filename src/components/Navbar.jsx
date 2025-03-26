@@ -224,20 +224,20 @@ export default function Navbar() {
           </div>
 
           {/* Menu Items */}
-          <div className="hidden lg:flex items-center space-x-4">
+          <div className="hidden lg:flex items-center  space-x-4">
             {menuItems.map((item, index) => (
               <Link
                 key={index}
                 to={item.path}
-                className="group flex flex-col items-center justify-center w-20 h-20 rounded-md p-2 transition-all hover:bg-blue-500"
+                className="group flex flex-col items-center  rounded-md justify-center w-20 h-20 rounded-md p-2 transition-all hover:bg-blue500"
               >
-                <div className="w-10 h-10 p-0 border border-gray-300 flex items-center justify-center rounded-full bg-blue-50 group-hover:bg-white/90 transition-all">
+                <div className="w-10 h-10 p-0  flex items-center justify-center rounded-full bg-blue50 group-hover:bg-white/90 transition-all">
                   <IconComponent
                     name={item.icon}
-                    className="w-5 h-5 text-blue-500 group-hover:text-blue-600"
+                    className="w-5 h-5 text-blue500 group-hover:text-blue600"
                   />
                 </div>
-                <span className="mt-1 text-sm font-bold text-gray-700 group-hover:text-white transition-colors">
+                <span className="mt-1 text-sm font-bold text-gray700 group-hover:text-white transition-colors">
                   {item.name}
                 </span>
               </Link>
@@ -249,7 +249,7 @@ export default function Navbar() {
             <div className="relative">
               <button
                 onClick={() => setIsLoginOpen(!isLoginOpen)}
-                className="flex items-center gap-1 rounded-md border border-blue-500 py-2 px-4 text-sm font-medium text-blue-600 transition-all hover:bg-blue-500 hover:text-white focus:ring-2 focus:ring-blue-300"
+                className="flex items-center gap-1 rounded-md bg-blue50 border border-blue500 py-2 px-4 text-sm font-medium text-blue600 transition-all hover:bg-blue500 hover:text-white focus:ring-2 focus:ring-blue300"
               >
                 Login
                 <ChevronDown
@@ -287,10 +287,10 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsSidebarOpen(true)}
-            className="lg:hidden flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 text-gray-700 focus:outline-none hover:bg-gray-200 transition-colors"
+            className="lg:hidden flex items-center justify-center w-10 h-10 bg-blue50 rounded-full bg-gray-100 text-gray700 focus:outline-none hover:bg-gray200 transition-colors"
             aria-label="Open menu"
           >
-            <Menu className="w-5 h-5" />
+            <Menu className="w-5 h-5 " />
           </button>
         </div>
       </nav>
@@ -310,18 +310,18 @@ export default function Navbar() {
             {/* Close Button */}
             <button
               onClick={() => setIsSidebarOpen(false)}
-              className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-gray-200 transition-colors"
+              className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center bg-blue50 rounded-full bg-gray-100 text-gray600 hover:bg-gray200 transition-colors"
               aria-label="Close menu"
             >
               <X className="w-4 h-4" />
             </button>
 
             <div className="mt-2 mb-8">
-              <div className="flex items-center ">
+              <div className="flex items-center justify-center ">
                 <img
                   src="/src/assets/logo.png"
                   alt="Urbane Travels Logo"
-                  className="h-20 w-auto mr-2"
+                  className="h-15 w-auto  "
                 />
               </div>
             </div>
@@ -332,16 +332,16 @@ export default function Navbar() {
                 <Link
                   key={index}
                   to={item.path}
-                  className="flex items-center gap-3 p-3 rounded-lg transition-colors hover:bg-blue-50 group"
+                  className="flex items-center gap-3 p-3 rounded-lg transition-colors hover:bg-blue50 group"
                   onClick={() => setIsSidebarOpen(false)}
                 >
-                  <div className="w-9 h-9 flex items-center justify-center rounded-full bg-blue-100 group-hover:bg-blue-200 transition-colors">
+                  <div className="w-9 h-9 flex items-center justify-center rounded-full bg-blue100 group-hover:bg-blue200 transition-colors">
                     <IconComponent
                       name={item.icon}
-                      className="w-4 h-4 text-blue-600"
+                      className="w-4 h-4 text-blue600"
                     />
                   </div>
-                  <span className="text-sm font-medium text-gray-700">
+                  <span className="text-sm font-medium text-gray700">
                     {item.name}
                   </span>
                 </Link>
@@ -353,7 +353,7 @@ export default function Navbar() {
               <div className="relative">
                 <button
                   onClick={() => setIsLoginOpen(!isLoginOpen)}
-                  className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg bg-blue-500 text-white font-medium hover:bg-blue-600 transition-colors"
+                  className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg bg-blue500 text-white font-medium hover:bg-blue-600 transition-colors"
                 >
                   Login
                   <ChevronDown
@@ -389,8 +389,8 @@ export default function Navbar() {
             </div>
 
             {/* Sidebar Social Icons */}
-            <div className="mt-8 flex justify-center space-x-3">
-              <SocialButton icon={<Facebook className="w-4 h-4" />} />
+            <div className="mt-8 flex justify-center space-x-3 ">
+              <SocialButton icon={<Facebook className="w-4 h-4 " />} />
               <SocialButton icon={<Twitter className="w-4 h-4" />} />
               <SocialButton icon={<Instagram className="w-4 h-4" />} />
             </div>
