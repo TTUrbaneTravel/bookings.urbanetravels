@@ -482,7 +482,7 @@ module.exports = {
       animation: {
         pingonce: 'ping 5s cubicbezier(0, 0, 0.2, 1)',
         rotating: 'rotating 30s linear infinite',
-        'spin1.5': 'spin 1.5s linear infinite',
+        spin: 'spin 0.2s linear infinite',
         spin2: 'spin 2s linear infinite',
         spin3: 'spin 3s linear infinite',
       },
