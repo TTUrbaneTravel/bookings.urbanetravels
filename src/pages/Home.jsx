@@ -19,7 +19,8 @@ const Button = ({ children, className, variant, onClick }) => {
 
   const variantStyles = {
     default: 'bg-teal-700 text-white hover:bg-teal-800',
-    outline: 'border border-input bg-transparent hover:bg-accent hover:text-accent-foreground',
+    outline:
+      'border border-input bg-transparent hover:bg-accent hover:text-accent-foreground',
     secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
     ghost: 'hover:bg-accent hover:text-accent-foreground',
     link: 'text-primary underline-offset-4 hover:underline',
@@ -36,7 +37,12 @@ const Button = ({ children, className, variant, onClick }) => {
   const sizeStyle = sizeStyles.default;
 
   return (
-    <button className={`${baseStyles} ${variantStyle} ${sizeStyle} ${className || ''}`} onClick={onClick}>
+    <button
+      className={`${baseStyles} ${variantStyle} ${sizeStyle} ${
+        className || ''
+      }`}
+      onClick={onClick}
+    >
       {children}
     </button>
   );
@@ -47,13 +53,23 @@ const Input = ({ type, placeholder, className }) => {
     <input
       type={type || 'text'}
       placeholder={placeholder}
-      className={`flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ${className || ''}`}
+      className={`flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ${
+        className || ''
+      }`}
     />
   );
 };
 
 const Card = ({ children, className }) => {
-  return <div className={`rounded-lg border bg-card text-card-foreground shadow-sm ${className || ''}`}>{children}</div>;
+  return (
+    <div
+      className={`rounded-lg border bg-card text-card-foreground shadow-sm ${
+        className || ''
+      }`}
+    >
+      {children}
+    </div>
+  );
 };
 
 const CardContent = ({ children, className }) => {
@@ -96,7 +112,9 @@ const TabsList = ({ children, value, onValueChange, className }) => {
 
   return (
     <div
-      className={`inline-flex h-10 items-center justify-center rounded-md bg-muted p-1 text-muted-foreground ${className || ''}`}
+      className={`inline-flex h-10 items-center justify-center rounded-md bg-muted p-1 text-muted-foreground ${
+        className || ''
+      }`}
     >
       {childrenWithProps}
     </div>
@@ -107,7 +125,9 @@ const TabsTrigger = ({ children, value, isActive, onSelect, className }) => {
   return (
     <button
       className={`inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 ${
-        isActive ? 'bg-background text-foreground shadow-sm' : 'hover:bg-muted hover:text-foreground'
+        isActive
+          ? 'bg-background text-foreground shadow-sm'
+          : 'hover:bg-muted hover:text-foreground'
       } ${className || ''}`}
       onClick={onSelect}
     >
@@ -121,7 +141,9 @@ const TabsContent = ({ children, value, tabValue, className }) => {
 
   return (
     <div
-      className={`mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${className || ''}`}
+      className={`mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${
+        className || ''
+      }`}
     >
       {children}
     </div>
@@ -135,7 +157,11 @@ const Accordion = ({ children, type, collapsible, className }) => {
     if (type === 'single') {
       setOpenItems(openItems.includes(value) ? [] : [value]);
     } else {
-      setOpenItems(openItems.includes(value) ? openItems.filter((item) => item !== value) : [...openItems, value]);
+      setOpenItems(
+        openItems.includes(value)
+          ? openItems.filter((item) => item !== value)
+          : [...openItems, value],
+      );
     }
   };
 
@@ -169,7 +195,9 @@ const AccordionItem = ({ children, value, isOpen, onToggle, className }) => {
     return child;
   });
 
-  return <div className={`border-b ${className || ''}`}>{childrenWithProps}</div>;
+  return (
+    <div className={`border-b ${className || ''}`}>{childrenWithProps}</div>
+  );
 };
 
 const AccordionTrigger = ({ children, isOpen, onToggle, className }) => {
@@ -177,7 +205,9 @@ const AccordionTrigger = ({ children, isOpen, onToggle, className }) => {
     <button
       type="button"
       onClick={onToggle}
-      className={`flex flex-1 items-center justify-between py-4 font-medium transition-all hover:underline [&[data-state=open]>svg]:rotate-180 ${className || ''}`}
+      className={`flex flex-1 items-center justify-between py-4 font-medium transition-all hover:underline [&[data-state=open]>svg]:rotate-180 ${
+        className || ''
+      }`}
     >
       {children}
       <svg
@@ -190,7 +220,9 @@ const AccordionTrigger = ({ children, isOpen, onToggle, className }) => {
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className={`h-4 w-4 shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+        className={`h-4 w-4 shrink-0 transition-transform duration-200 ${
+          isOpen ? 'rotate-180' : ''
+        }`}
       >
         <polyline points="6 9 12 15 18 9"></polyline>
       </svg>
@@ -202,7 +234,9 @@ const AccordionContent = ({ children, isOpen, className }) => {
   if (!isOpen) return null;
 
   return (
-    <div className={`overflow-hidden text-sm transition-all ${className || ''}`}>
+    <div
+      className={`overflow-hidden text-sm transition-all ${className || ''}`}
+    >
       <div className="pb-4 pt-0">{children}</div>
     </div>
   );
@@ -340,16 +374,27 @@ const Search = () => (
 
 // Main component
 const TravelWebsite = () => {
+  const [tripType, setTripType] = useState('oneway');
+  const [from, setFrom] = useState('');
+  const [to, setTo] = useState('');
+  const [departureDate, setDepartureDate] = useState('');
+  const [returnDate, setReturnDate] = useState('');
+  const [passengers, setPassengers] = useState(1);
+  const [travelClass, setTravelClass] = useState('Economy');
   const [activeTab, setActiveTab] = useState('all');
   const [currentSlide, setCurrentSlide] = useState(0);
   const [openFaqIndex, setOpenFaqIndex] = useState(null);
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev === destinations.length - 1 ? 0 : prev + 1));
+    setCurrentSlide((prev) =>
+      prev === destinations.length - 1 ? 0 : prev + 1,
+    );
   };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev === 0 ? destinations.length - 1 : prev - 1));
+    setCurrentSlide((prev) =>
+      prev === 0 ? destinations.length - 1 : prev - 1,
+    );
   };
 
   const toggleFaq = (index) => {
@@ -388,24 +433,84 @@ const TravelWebsite = () => {
             Discover breathtaking destinations and create unforgettable memories
           </motion.p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="w-full max-w-2xl relative"
-          >
-            <Input
-              type="text"
-              placeholder="Where would you like to go?"
-              className="h-14 pl-12 pr-4 rounded-full text-lg shadow-xl border-2 border-white/20 bg-white/10 backdrop-blur-md text-white placeholder:text-white/70"
-            />
-            <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white/70">
-              <Search />
+          <div className="w-full  p-6 rounded-xl shadow-lg bg-white/10 backdrop-blur-3xl border border-white/20">
+            {/* Tabs for Trip Type */}
+            <div className="flex justify-center space-x-4 mb-4">
+              {['oneway', 'roundtrip', 'multicity'].map((type) => (
+                <button
+                  key={type}
+                  className={`px-4 py-2 text-sm font-semibold rounded-lg transition ${
+                    tripType === type
+                      ? 'bg-white/20 text-white'
+                      : 'bg-transparent text-gray300 hover:bg-white/10'
+                  }`}
+                  onClick={() => setTripType(type)}
+                >
+                  {type === 'oneway'
+                    ? 'One Way'
+                    : type === 'roundtrip'
+                    ? 'Round Trip'
+                    : 'Multi-City'}
+                </button>
+              ))}
             </div>
-            <Button className="absolute right-2 top-1/2 transform -translate-y-1/2 rounded-full h-10 px-6 bg-teal700 hover:bg-teal600 text-black font-medium">
-              Search
-            </Button>
-          </motion.div>
+
+            {/* Input Fields (Two Rows) */}
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+              <div>
+                <label className="text-gray200 font-medium">From</label>
+                <input
+                  type="text"
+                  placeholder="Enter departure city"
+                  value={from}
+                  onChange={(e) => setFrom(e.target.value)}
+                  className="w-full mt-1 p-3 border border-white/30 bg-white/10 text-white placeholder-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/40"
+                />
+              </div>
+              <div>
+                <label className="text-gray200 font-medium">To</label>
+                <input
+                  type="text"
+                  placeholder="Enter destination city"
+                  value={to}
+                  onChange={(e) => setTo(e.target.value)}
+                  className="w-full mt-1 p-3 border border-white/30 bg-white/10 text-white placeholder-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/40"
+                />
+              </div>
+          
+              <div>
+                <label className="text-gray200 font-medium">
+                  Departure Date
+                </label>
+                <input
+                  type="date"
+                  value={departureDate}
+                  onChange={(e) => setDepartureDate(e.target.value)}
+                  className="w-full mt-1 p-3 border border-white/30 bg-white/10 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-white/40"
+                />
+              </div>
+              {tripType === 'roundtrip' && (
+                <div>
+                  <label className="text-gray200 font-medium">
+                    Return Date
+                  </label>
+                  <input
+                    type="date"
+                    value={returnDate}
+                    onChange={(e) => setReturnDate(e.target.value)}
+                    className="w-full mt-1 p-3 border border-white/30 bg-white/10 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-white/40"
+                  />
+                </div>
+              )}
+            </div>
+
+            {/* Search Button (Wider, Shorter) */}
+            <div className="mt-6 flex justify-center">
+              <button className="w-full border border-gray200 py-2 bg-white/20 text-white font-semibold rounded-lg hover:bg-white/30 transition">
+                Search Flights
+              </button>
+            </div>
+          </div>
 
           <motion.div
             initial={{ opacity: 0 }}
@@ -423,9 +528,12 @@ const TravelWebsite = () => {
       {/* Popular Destinations */}
       <section className="py-20 px-4 md:px-8 lg:px-16 max-w-7xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">Popular Destinations</h2>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
+            Popular Destinations
+          </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Discover stunning landscapes, vibrant cities, and hidden gems around the world
+            Discover stunning landscapes, vibrant cities, and hidden gems around
+            the world
           </p>
         </div>
 
@@ -446,9 +554,12 @@ const TravelWebsite = () => {
                 </div>
 
                 <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                  <h3 className="text-2xl font-bold mb-2">Exotic Destination {i + 1}</h3>
+                  <h3 className="text-2xl font-bold mb-2">
+                    Exotic Destination {i + 1}
+                  </h3>
                   <p className="text-white/80 mb-4">
-                    Explore stunning landscapes, rich culture, and breathtaking sights
+                    Explore stunning landscapes, rich culture, and breathtaking
+                    sights
                   </p>
 
                   <div className="flex flex-col space-y-2 mb-4 text-sm">
@@ -479,7 +590,9 @@ const TravelWebsite = () => {
                     >
                       View Details
                     </Button>
-                    <Button className="flex-1 bg-teal700 hover:bg-teal900 text-black">Book Now</Button>
+                    <Button className="flex-1 bg-teal700 hover:bg-teal900 text-black">
+                      Book Now
+                    </Button>
                   </div>
                 </div>
               </div>
@@ -509,9 +622,12 @@ const TravelWebsite = () => {
       <section className="py-20 px-4 md:px-8 lg:px-16 bg-gradient-to-br from-teal900 to-amber800 text-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">Special Offers</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              Special Offers
+            </h2>
             <p className="text-lg text-white/80 max-w-3xl mx-auto">
-              Unlock amazing deals on travel, accommodation, and experiences worldwide
+              Unlock amazing deals on travel, accommodation, and experiences
+              worldwide
             </p>
           </div>
 
@@ -521,11 +637,15 @@ const TravelWebsite = () => {
                 <button
                   key={tab}
                   className={`flex-1 rounded-full py-2 text-white transition-colors ${
-                    activeTab === tab ? 'bg-white text-teal800 font-bold special' : 'hover:bg-white/10'
+                    activeTab === tab
+                      ? 'bg-white text-teal800 font-bold special'
+                      : 'hover:bg-white/10'
                   }`}
                   onClick={() => setActiveTab(tab)}
                 >
-                  {tab === 'bankOffers' ? 'Bank Offers' : tab.charAt(0).toUpperCase() + tab.slice(1)}
+                  {tab === 'bankOffers'
+                    ? 'Bank Offers'
+                    : tab.charAt(0).toUpperCase() + tab.slice(1)}
                 </button>
               ))}
             </div>
@@ -533,14 +653,19 @@ const TravelWebsite = () => {
             <div className="mt-0">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
                 {offersContent[activeTab].map((offer, index) => (
-                  <Card key={index} className="bg-white/10 backdrop-blur-md border-white/20 overflow-hidden">
+                  <Card
+                    key={index}
+                    className="bg-white/10 backdrop-blur-md border-white/20 overflow-hidden"
+                  >
                     <div className="p-6">
                       <div className="absolute top-0 right-0 bg-amber500 text-white px-4 py-1 text-sm font-medium rounded-bl-lg">
                         Limited Time
                       </div>
                       <h3 className="text-2xl font-bold mb-2">{offer.title}</h3>
                       <p className="text-white/80 mb-4">{offer.description}</p>
-                      <Button className="w-full bg-teal700 border border-white text-white hover:bg-white/90 hover:text-teal600">Claim Offer</Button>
+                      <Button className="w-full bg-teal700 border border-white text-white hover:bg-white/90 hover:text-teal600">
+                        Claim Offer
+                      </Button>
                     </div>
                   </Card>
                 ))}
@@ -554,7 +679,9 @@ const TravelWebsite = () => {
       <section className="py-20 px-4 md:px-8 lg:px-16 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray900 mb-4">Our Services</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray900 mb-4">
+              Our Services
+            </h2>
             <p className="text-lg text-gray600 max-w-3xl mx-auto">
               Everything you need for a perfect travel experience
             </p>
@@ -571,7 +698,9 @@ const TravelWebsite = () => {
                     {block.icon}
                   </div>
                 </div>
-                <h3 className="text-xl font-bold text-gray900 text-center mb-3">{block.title}</h3>
+                <h3 className="text-xl font-bold text-gray900 text-center mb-3">
+                  {block.title}
+                </h3>
                 <p className="text-gray600 text-center">{block.description}</p>
               </div>
             ))}
@@ -585,11 +714,16 @@ const TravelWebsite = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {/* FAQs */}
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray900 mb-8">Frequently Asked Questions</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray900 mb-8">
+                Frequently Asked Questions
+              </h2>
 
               <div className="space-y-4">
                 {faqs.map((faq, index) => (
-                  <div key={index} className="border border-gray300 rounded-full overflow-hidden shadow-sm">
+                  <div
+                    key={index}
+                    className="border border-gray300 rounded-full overflow-hidden shadow-sm"
+                  >
                     <button
                       onClick={() => toggleFaq(index)}
                       className="w-full flex justify-between items-center px-6 py-4 text-left text-lg font-medium text-gray-900 hover:bg-gray-50"
@@ -605,12 +739,18 @@ const TravelWebsite = () => {
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        className={`h-5 w-5 transition-transform duration-200 ${openFaqIndex === index ? 'rotate-180' : ''}`}
+                        className={`h-5 w-5 transition-transform duration-200 ${
+                          openFaqIndex === index ? 'rotate-180' : ''
+                        }`}
                       >
                         <polyline points="6 9 12 15 18 9"></polyline>
                       </svg>
                     </button>
-                    {openFaqIndex === index && <div className="px-6 pb-4 pt-2 text-gray-600">{faq.answer}</div>}
+                    {openFaqIndex === index && (
+                      <div className="px-6 pb-4 pt-2 text-gray-600">
+                        {faq.answer}
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
@@ -618,18 +758,29 @@ const TravelWebsite = () => {
 
             {/* Reviews */}
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">What Our Travelers Say</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
+                What Our Travelers Say
+              </h2>
 
               <div className="space-y-6">
                 {reviews.map((review, index) => (
-                  <div key={index} className="bg-gray-50 rounded-xl p-6 border border-gray300 shadow-sm">
+                  <div
+                    key={index}
+                    className="bg-gray-50 rounded-xl p-6 border border-gray300 shadow-sm"
+                  >
                     <div className="flex justify-between items-start mb-4">
-                      <h3 className="text-xl font-semibold text-gray900">{review.name}</h3>
+                      <h3 className="text-xl font-semibold text-gray900">
+                        {review.name}
+                      </h3>
                       <div className="flex">
                         {Array.from({ length: 5 }).map((_, i) => (
                           <svg
                             key={i}
-                            className={`h-5 w-5 ${i < review.rating ? 'text-amber500' : 'text-gray300'}`}
+                            className={`h-5 w-5 ${
+                              i < review.rating
+                                ? 'text-amber500'
+                                : 'text-gray300'
+                            }`}
                             fill="currentColor"
                             viewBox="0 0 20 20"
                           >
@@ -644,7 +795,9 @@ const TravelWebsite = () => {
               </div>
 
               <div className="mt-8 text-center">
-                <Button className="bg-teal-800 hover:bg-teal-900">View All Reviews</Button>
+                <Button className="bg-teal-800 hover:bg-teal-900">
+                  View All Reviews
+                </Button>
               </div>
             </div>
           </div>

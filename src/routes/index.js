@@ -11,12 +11,17 @@ const VisaInstruction = lazy(() => import('../components/Visas/instructions'));
 const VisaApplication = lazy(() => import('../components/Visas/application'));
 const VisaForm = lazy(() => import('../components/Visas/visaform'));
 const VisaFormCheckout = lazy(() => import('../pages/Visas/checkout'));
-
+const b2clogin = lazy(() => import('../pages/b2clogin'));
 const coreRoutes = [
   {
     path: '/',
     title: 'Home',
     component: Home,
+  },
+  {
+    path: '/customer-login',
+    title: 'b2clogin',
+    component: b2clogin,
   },
   {
     path: '/flights',

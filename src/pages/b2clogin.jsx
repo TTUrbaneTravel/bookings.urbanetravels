@@ -198,89 +198,48 @@ export default function TravelLogin() {
           </div>
 
           <form className="space-y-5 " onSubmit={handleSubmit}>
-          {isRegister && (
-        <div className="flex flex-col gap-6">
-          {/* Full Name and Phone Number Fields in Two Columns */}
-          <div className="flex gap-6">
-            {/* Full Name Field */}
-            <div className="w-1/2">
-              <label
-                htmlFor="name"
-                className="block text-sm font-medium text-gray700 mb-1"
-              >
-                Full Name
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                placeholder="John Doe"
-                onChange={handleChange}
-                className="w-full px-4 py-3 rounded-lg border border-gray300 shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
-              />
-            </div>
-
-            {/* Phone Number Field with Send OTP Button */}
-            <div className="w-1/2">
-            <label
-                htmlFor="phone"
-                className="block text-sm font-medium text-gray700 mb-1"
-              >
-                Phone Number
-              </label>
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                placeholder="123-456-7890"
-                onChange={handleChange}
-                className="w-full px-4 py-3 rounded-lg border border-gray300 shadow-sm focus:ring-2 focus:ring-blue500 focus:border-blue500 transition-all"
-              />
-            
-              <button
-                type="button"
-                onClick={handleSendOTP}
-                className="w-full mt-2 bg-gray800 hover:bg-gray900 text-white text-md py-3 rounded-full transition-all flex items-center justify-center gap-2"
-              >
-                Send OTP
-              </button>
-            </div>
-          </div>
-
-          {/* OTP Input Section - Only visible after clicking "Send OTP" */}
-          {showOtpInput && (
-            <div>
-              <div className="items-center gap-4">
-                {/* OTP Input Fields */}
-                <div className="flex justify-center gap-3">
-                  {[...Array(4)].map((_, index) => (
+            {isRegister && (
+              <div className="flex flex-col gap-6">
+                {/* Full Name and Phone Number Fields in Two Columns */}
+                <div className="flex gap-6">
+                  {/* Full Name Field */}
+                  <div className="w-1/2">
+                    <label
+                      htmlFor="name"
+                      className="block text-sm font-medium text-gray700 mb-1"
+                    >
+                      Full Name
+                    </label>
                     <input
-                      key={index}
                       type="text"
-                      maxLength="1"
-                      className="w-12 h-12 text-center text-lg font-semibold border border-gray300 rounded-full focus:ring-2 focus:ring-blue500 focus:border-blue500 transition-all"
+                      id="name"
+                      name="name"
+                      placeholder="John Doe"
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 rounded-lg border border-gray300 shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
                     />
-                  ))}
+                  </div>
+
+                  {/* Phone Number Field with Send OTP Button */}
+                  <div className="w-1/2">
+                    <label
+                      htmlFor="phone"
+                      className="block text-sm font-medium text-gray700 mb-1"
+                    >
+                      Phone Number
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      placeholder="123-456-7890"
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 rounded-lg border border-gray300 shadow-sm focus:ring-2 focus:ring-blue500 focus:border-blue500 transition-all"
+                    />
+                  </div>
                 </div>
-
-                {/* Verify OTP Button */}
-                <button
-                  type="button"
-                  onClick={handleVerifyOTP}
-                  className="w-full mt-2 bg-gray800 hover:bg-gray900 text-white text-md py-3 rounded-full transition-all flex items-center justify-center gap-2"
-                >
-                  {isLoading ? (
-                    <div className="w-6 h-6 border-4 border-gray500 border-t-white rounded-full animate-spin"></div>
-                  ) : (
-                    <span>Verify OTP</span>
-                  )}
-                </button>
               </div>
-            </div>
-          )}
-        </div>
-      )}
-
+            )}
 
             <div className="flex gap-6">
               {/* Email Address Field */}
@@ -365,11 +324,19 @@ export default function TravelLogin() {
             )}
             <button
               type="submit"
-              className="w-full bg-blue600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition-all flex items-center justify-center gap-2 group"
+              className="w-full bg-black hover:bg-gray-800 text-white font-medium py-3 px-4 rounded-lg transition-all flex items-center justify-center gap-2 group relative"
+              disabled={isLoading} // Disable the button when loading
             >
-              {isRegister ? 'Create Account' : 'Sign In'}
-              <ArrowRightIcon className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              {isLoading ? (
+                <div className="w-6 h-6 border-4 border-white border-t-gray-500 rounded-full animate-spin"></div>
+              ) : (
+                <>
+                  {isRegister ? 'Create Account' : 'Sign In'}
+                  <ArrowRightIcon className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </>
+              )}
             </button>
+
             <div className="relative flex items-center justify-center my-6">
               <div className="border-t border-gray-300 absolute w-full"></div>
               <span className="bg-white px-3 text-sm text-gray-500 relative">

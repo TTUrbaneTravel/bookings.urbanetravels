@@ -4,12 +4,13 @@ import { Toaster } from 'react-hot-toast';
 import Loader from './common/Loader';
 import SignIn from './pages/Authentication/SignIn';
 import SignUp from './pages/Authentication/SignUp';
-import B2CLogin from './pages/b2clogin'; // Import B2CLogin
 import routes from './routes/index';
 import routes1 from './routes/index1';
 import ECommerce from './pages/Dashboard/ECommerce';
 import Home from './pages/Home';
-import "./FlightFilteration.css";
+import './FlightFilteration.css';
+import b2clogin from './pages/b2clogin';
+//import SearchForm from './components/SearchForm';
 
 // Lazy Load Layouts
 const UserLayout = lazy(() => import('./layout/UserLayout'));
@@ -21,13 +22,6 @@ function App() {
   useEffect(() => {
     setTimeout(() => setLoading(false), 1000);
   }, []);
-
-  // Function to check if the user is authenticated
-  const isAuthenticated = () => {
-    // Implement your authentication logic here
-    // For example, check if a token exists in localStorage
-    return localStorage.getItem('token') !== null;
-  };
 
   return loading ? (
     <Loader />
@@ -45,13 +39,13 @@ function App() {
         {/* Authentication Routes */}
         <Route path="/auth/signin" element={<SignIn />} />
         <Route path="/auth/signup" element={<SignUp />} />
-        <Route path="/customer-login" element={<B2CLogin />} /> {/* New Route */}
+
 
         {/* Protected Routes (Require Authentication) */}
         <Route
           element={
             <Suspense fallback={<Loader />}>
-              {isAuthenticated() ? <UserLayout /> : <SignIn />}
+              <UserLayout />
             </Suspense>
           }
         >
@@ -69,28 +63,35 @@ function App() {
           ))}
         </Route>
 
-        {/* Default Layout Routes */}
-        <Route
-          element={
-            <Suspense fallback={<Loader />}>
-              <DefaultLayout />
-            </Suspense>
-          }
-        >
-          <Route path="/ecommerce" element={<ECommerce />} />
-          {routes1.map(({ path, component: Component }, index) => (
-            <Route
-              key={index}
-              path={path}
-              element={
-                <Suspense fallback={<Loader />}>
-                  <Component />
-                </Suspense>
-              }
-            />
-          ))}
+        <Route element={<DefaultLayout />}>
+          <Route element={<ECommerce />} />
+          {routes1.map((routes, index) => {
+            const { path, component: Component } = routes;
+            return (
+              <Route
+                key={index}
+                path={path}
+                element={
+                  <Suspense fallback={<Loader />}>
+                    <Component />
+                  </Suspense>
+                }
+              />
+            );
+          })}
         </Route>
       </Routes>
+
+      {/* <div className="p-6">
+        <h1 className="text-2xl font-bold">User List</h1>
+        <ul>
+          {users.map((user) => (
+            <li key={user.id} className="border p-2 my-2 rounded bg-gray-100">
+              {user.name}
+            </li>
+          ))}
+        </ul>
+      </div> */}
     </>
   );
 }
